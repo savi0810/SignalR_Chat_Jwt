@@ -10,7 +10,7 @@ import { useAuth } from '@/ApiServices/useAuth'
 const router = useRouter()
 const { logout } = useAuth()
 
-const AUTH_API = 'http://localhost:5212'
+const AUTH_API = 'https://signalr-chat-jwt.onrender.com'
 const TOKEN_KEY = 'auth_token'
 const USERNAME_KEY = 'auth_username'
 

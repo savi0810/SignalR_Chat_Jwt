@@ -1,0 +1,27 @@
+namespace:
+  name: kt2-k8s
+
+postgres:
+  image: postgres:15.3
+  port: 5432
+  storage: 1Gi
+
+backend:
+  image: chat-backend:local
+  port: 8080
+
+
+frontend:
+  image: chat-frontend:local
+  port: 3000
+
+configmap:
+  backendApiUrl: http://localhost:8080
+  corsAllowedOrigins:
+    - http://localhost:3000
+  jwtIssuer: AuthService
+  jwtAudience: ChatFrontend
+  jwtExpirationDays: "7"
+
+ingress:
+  className: nginx

@@ -10,7 +10,7 @@ import { useAuth } from '@/ApiServices/useAuth'
 const router = useRouter()
 const { logout } = useAuth()
 
-const AUTH_API = 'https://signalr-chat-jwt.onrender.com'
+const AUTH_API = import.meta.env.VITE_AUTH_API ?? ''
 const TOKEN_KEY = 'auth_token'
 const USERNAME_KEY = 'auth_username'
 
@@ -34,7 +34,7 @@ const messages = ref<ChatMessage[]>([
 const token = localStorage.getItem(TOKEN_KEY)
 
 const client = new signalR.HubConnectionBuilder()
-  .withUrl(`${AUTH_API}/chathub`, {
+  .withUrl(`${AUTH_API}/api/chathub`, {
     accessTokenFactory: () => token || '',
   })
   .withAutomaticReconnect()

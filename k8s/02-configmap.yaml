@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: kt2-k8s
+data:
+  BACKEND_API_URL: http://localhost:8080
+  CORS__ALLOWED_ORIGINS__0: http://localhost:3000
+  JWT__ISSUER: AuthService
+  JWT__AUDIENCE: ChatFrontend
+  JWT__EXPIRATIONDAYS: "7"
+ 

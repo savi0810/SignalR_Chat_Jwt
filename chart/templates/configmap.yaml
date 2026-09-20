@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: {{ .Values.namespace.name }}
+data:
+  BACKEND_API_URL: {{ .Values.configmap.backendApiUrl }}
+  CORS__ALLOWED_ORIGINS__0: {{ index .Values.configmap.corsAllowedOrigins 0 }}
+  JWT__ISSUER: {{ .Values.configmap.jwtIssuer }}
+  JWT__AUDIENCE: {{ .Values.configmap.jwtAudience }}
+  JWT__EXPIRATIONDAYS: {{ .Values.configmap.jwtExpirationDays | quote }}
+ 

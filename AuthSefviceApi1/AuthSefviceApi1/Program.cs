@@ -35,7 +35,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 var accessToken = context.Request.Query["access_token"];
 
                 if (!string.IsNullOrEmpty(accessToken) &&
-                    context.HttpContext.Request.Path.StartsWithSegments("/chathub"))
+                    context.HttpContext.Request.Path.StartsWithSegments("/api/chathub"))
                 {
                     context.Token = accessToken;
                 }
@@ -77,7 +77,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<ChatHub>("/chathub");
+app.MapHub<ChatHub>("/api/chathub");
 
 using (var scope = app.Services.CreateScope())
 {
